@@ -6,18 +6,57 @@ package com.wangpeng.learn.sort.bubble;
  */
 public class BubbleSort {
 
+    public int[] sourceArr;
 
-    public int[] sort(int[] source){
+    public String sortType;
 
-        if(source.length==0){
+    public BubbleSort(int[] arr,String sortType){
+        this.sourceArr = arr;
+        this.sortType = sortType;
+    }
+
+    public int[] sort(){
+
+        if(sourceArr.length==0){
             return null;
         }
 
-        for(int i=0;i<source.length;i++){
+        for(int i=0;i<sourceArr.length-1;i++){
 
+            if(sortType.equals("asc")) {
+                for (int j = 0; j < sourceArr.length - i - 1; j++) {
+                    if (sourceArr[j] > sourceArr[j + 1]) {
+                        int tmp = sourceArr[j];
+                        sourceArr[j] = sourceArr[j + 1];
+                        sourceArr[j + 1] = tmp;
+                    }
+                }
+            }else{
+                for (int j = sourceArr.length-1; j > i; j--) {
+                    if (sourceArr[j] > sourceArr[j - 1]) {
+                        int tmp = sourceArr[j];
+                        sourceArr[j] = sourceArr[j - 1];
+                        sourceArr[j - 1] = tmp;
+                    }
+                }
+            }
         }
+        return sourceArr;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int x : this.sourceArr){
+           sb.append(x).append("、");
+        }
+        return sb.toString();
+    }
 
 
-        return source;
+    public static void main(String[] args) {
+        BubbleSort bb = new BubbleSort(new int[]{4,23,443,232,11,67888,88888},"desc");
+        bb.sort();
+        System.out.println(bb.toString());
     }
 }
