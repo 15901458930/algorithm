@@ -1,16 +1,19 @@
 package com.wangpeng.learn.sort.bubble;
+
+import org.junit.Test;
 /**
  * 冒泡排序
  *
  * 算法原理：将相邻的两个数对比，看是否需要互换位置，从而将最大或最小的数冒泡到最左或最右
  */
+
 public class BubbleSort {
 
     public int[] sourceArr;
 
     public String sortType;
 
-    public BubbleSort(int[] arr,String sortType){
+    public BubbleSort(int[] arr, String sortType){
         this.sourceArr = arr;
         this.sortType = sortType;
     }
@@ -51,12 +54,5 @@ public class BubbleSort {
            sb.append(x).append("、");
         }
         return sb.toString();
-    }
-
-
-    public static void main(String[] args) {
-        BubbleSort bb = new BubbleSort(new int[]{4,23,443,232,11,67888,88888},"desc");
-        bb.sort();
-        System.out.println(bb.toString());
     }
 }
